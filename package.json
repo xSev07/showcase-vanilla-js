@@ -1,0 +1,26 @@
+{
+  "name": "showcase-vanilla-js",
+  "version": "1.0.0",
+  "description": "Демонстрация владения навыками вёрстки и чистого JS ES6",
+  "author": "Дмитроченко Артём Владимирович",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint src/**/*.js",
+    "test": "npm run eslint",
+    "build": "webpack",
+    "start": "webpack-dev-server --open"
+  },
+  "devDependencies": {
+    "eslint": "6.1.0",
+    "eslint-config-htmlacademy": "0.5.2",
+    "webpack": "4.42.1",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.10.3"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "dependencies": {
+    "sanitize-html": "1.23.0"
+  }
+}
