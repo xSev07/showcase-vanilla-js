@@ -26,18 +26,19 @@ gulp.task("css", function () {
     .pipe(csso())
     .pipe(rename("style.min.css"))
     .pipe(sourcemap.write("."))
-    .pipe(gulp.dest("build/css"))
+    .pipe(gulp.dest("markup/build/css"))
     .pipe(server.stream());
 });
 
 gulp.task("copy", function () {
   return gulp.src([
       "markup/source/fonts/**/*.{woff,woff2}",
-      "markup/source/ico/**"
+      "markup/source/ico/**",
+	  "markup/source/css/**",
     ], {
-      base: "markup"
+      base: "markup/source"
     })
-    .pipe(gulp.dest("build"));
+    .pipe(gulp.dest("markup/build"));
 })
 
 gulp.task("images", function () {
