@@ -1,1 +1,12 @@
-@import "blocks/t.scss";
+@import "fonts";
+@import "variables";
+@import "mixins";
+@import "global.scss";
+@import "blocks/header.scss";
+@import "blocks/main_nav.scss";
+@import "blocks/site_nav";
+@import "blocks/additional_nav.scss";
+@import "blocks/page_main.scss";
+@import "blocks/filter_list.scss";
+@import "blocks/goods";
+@import "blocks/social";

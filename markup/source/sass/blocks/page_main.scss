@@ -1,0 +1,10 @@
+.page-main {
+  max-width: 1000px;
+  padding: 0 20px;
+  &__title {
+    margin: 20px auto;
+    @include set-font-size(36px);
+    font-weight: 400;
+    text-align: center;
+  }
+}

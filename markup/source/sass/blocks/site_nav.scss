@@ -1,0 +1,27 @@
+.site-nav {
+  min-width: 130px;
+  @include reset-list();
+  @include set-font-size(16px, 36px);
+  color: $grey;
+  border-top: 2px solid $blue;
+
+  &__link {
+    display: block;
+    padding: 0 20px;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+
+    &:visited {
+      color: inherit;
+    }
+  }
+}

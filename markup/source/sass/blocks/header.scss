@@ -1,0 +1,45 @@
+.header {
+  padding-bottom: 20px;
+  box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+
+  &__wrapper {
+    max-width: 960px;
+    padding: 0 20px;
+  }
+
+  &__logo {
+    display: block;
+    width: 282px;
+    margin: 10px auto 20px;
+    padding: 0 25px;
+    @include set-font-size(0);
+
+    &:hover,
+    &:focus {
+      opacity: 0.5;
+      outline: none;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .header {
+    padding: 10px 0;
+
+    &__wrapper {
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    &__logo {
+      margin: 0;
+      margin-right: 10px;
+      padding: 0;
+    }
+  }
+}

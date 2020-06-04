@@ -1,0 +1,48 @@
+body {
+  min-width: 380px;
+  margin: 0 auto;
+  font-family: "Segoe UI", Arial, sans-serif;
+  @include set-font-size(16px, 36px);
+  font-weight: normal;
+  color: $black;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+.input {
+  width: 100%;
+  padding: 4px 5px;
+  box-sizing: border-box;
+  border: 1px solid #706f6f;
+  border-radius: 6px;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    border-color: $blue;
+  }
+}
