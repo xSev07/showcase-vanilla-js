@@ -1,6 +1,15 @@
 import AbstractComponent from "./abstract-component";
 
-const createFilterTemplate = () => {
+const createOptionTemplate = (value) => {
+  return (`
+    <option>${value}</option>
+  `);
+};
+
+const createFilterTemplate = (filters) => {
+  const subjectOptionsTemplate = filters.subjects.map((it) => createOptionTemplate(it)).join(`\n`);
+  const genresOptionsTemplate = filters.genres.map((it) => createOptionTemplate(it)).join(`\n`);
+  const gradesOptionsTemplate = filters.grades.map((it) => createOptionTemplate(it)).join(`\n`);
   return (`
     <section class="filter">
       <h2 class="visually-hidden">Фильтры</h2>
@@ -8,22 +17,19 @@ const createFilterTemplate = () => {
         <li class="filter__item">
           <label for="subject" class="visually-hidden">Выберите предмет</label>
           <select id="subject" class="filter__option input">
-            <option value="all">Все предметы</option>
-            <option value="algebra">Алгебра</option>
+            ${subjectOptionsTemplate}
           </select>
         </li>
         <li class="filter__item">
           <label for="genre" class="visually-hidden">Выберите жанр</label>
           <select id="genre" class="filter__option input">
-            <option value="all">Все жанры</option>
-            <option value="algebra">Демо</option>
+            ${genresOptionsTemplate}
           </select>
         </li>
         <li class="filter__item">
           <label for="class" class="visually-hidden">Выберите класс</label>
           <select id="class" class="filter__option input">
-            <option value="all">Все классы</option>
-            <option value="algebra">1</option>
+            ${gradesOptionsTemplate}
           </select>
         </li>
       </ul>
@@ -37,11 +43,11 @@ const createFilterTemplate = () => {
 };
 
 export default class FilterComponent extends AbstractComponent {
-  constructor(courses) {
+  constructor(filters) {
     super();
-    this._courses = courses;
+    this._filters = filters;
   }
   getTemplate() {
-    return createFilterTemplate();
+    return createFilterTemplate(this._filters);
   }
 }

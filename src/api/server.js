@@ -24,7 +24,6 @@ export default class Server {
   }
 
   getCourses() {
-    return Promise.resolve([]);
     return this._load({
       url: `update`,
       method: Method.POST,
