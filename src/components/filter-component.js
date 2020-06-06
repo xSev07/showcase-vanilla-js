@@ -37,6 +37,10 @@ const createFilterTemplate = () => {
 };
 
 export default class FilterComponent extends AbstractComponent {
+  constructor(courses) {
+    super();
+    this._courses = courses;
+  }
   getTemplate() {
     return createFilterTemplate();
   }

@@ -1,17 +1,8 @@
-import FilterComponent from "./components/filter-component";
-import {render} from "./utils/render";
-import CatalogComponent from "./components/catalog";
-import CurrencyComponent from "./components/currency-component";
-import GoodsComponent from "./components/goods-component";
+import PageController from "./controllers/page-controller";
+import Server from "./api/server";
 
-const siteMainElement = document.querySelector(`.page-main`);
+const END_POINT = `http://krapipl.imumk.ru:8082/api/mobilev1`;
+const server = new Server(END_POINT);
 
-const filterComponent = new FilterComponent();
-const catalogComponent = new CatalogComponent();
-const currencyComponent = new CurrencyComponent();
-const goodsComponent = new GoodsComponent();
-
-render(siteMainElement, filterComponent);
-render(siteMainElement, catalogComponent);
-render(siteMainElement, currencyComponent);
-render(siteMainElement, goodsComponent);
+const pageController = new PageController(server);
+pageController.render();
