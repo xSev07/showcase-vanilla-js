@@ -1,0 +1,16 @@
+.page-footer {
+  color: $white;
+  background-color: $black;
+  padding: 5px 20px;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 960px;
+  }
+
+  &__social {
+    margin: 0 5px;
+  }
+}

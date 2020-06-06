@@ -1,0 +1,23 @@
+.legal {
+  &__container {
+    margin: 4px 0;
+    @include set-font-size(12px);
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      outline: 1px solid $white;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
+}

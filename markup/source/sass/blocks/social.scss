@@ -1,5 +1,55 @@
 .social {
+  flex-shrink: 1;
   &__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     @include reset-list();
+  }
+
+  &__item {
+    margin: 2px 4px;
+    @include set-font-size(0);
+  }
+
+  &__link {
+    display: block;
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    background-color: $white;
+    fill: $black;
+
+    &:hover,
+    &:focus {
+      background-color: $black;
+      fill: $white;
+      outline: none;
+      box-shadow: 0 0 0 1px $white inset, 0 0 6px $white;
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
+
+    &--twitter {
+      padding-top: 5px;
+      padding-left: 6px;
+    }
+
+    &--vk {
+      padding-top: 6px;
+      padding-left: 5px;
+    }
+
+    &--facebook {
+      padding-top: 5px;
+      padding-left: 5px;
+    }
+
+    &--instagram {
+      padding-top: 4px;
+      padding-left: 5px;
+    }
   }
 }
