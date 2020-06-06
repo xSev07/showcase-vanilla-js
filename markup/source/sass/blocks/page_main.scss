@@ -1,8 +1,9 @@
 .page-main {
   max-width: 1000px;
+
   &__title {
-    margin: 20px auto;
     @include set-font-size(36px);
+    margin: 20px auto;
     font-weight: 400;
     text-align: center;
   }

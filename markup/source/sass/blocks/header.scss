@@ -8,11 +8,11 @@
   }
 
   &__logo {
+    @include set-font-size(0);
     display: block;
     width: 282px;
     margin: 10px auto 20px;
     padding: 0 25px;
-    @include set-font-size(0);
 
     &:hover,
     &:focus {

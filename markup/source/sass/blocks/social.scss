@@ -1,15 +1,16 @@
 .social {
   flex-shrink: 1;
+
   &__list {
+    @include reset-list();
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    @include reset-list();
   }
 
   &__item {
-    margin: 2px 4px;
     @include set-font-size(0);
+    margin: 2px 4px;
   }
 
   &__link {

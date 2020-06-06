@@ -2,6 +2,7 @@
   position: relative;
 
   &__toggle {
+    @include reset-button();
     position: absolute;
     top: $burger-toggle-top;
     left: $burger-toggle-left;
@@ -9,12 +10,11 @@
     display: block;
     width: 40px;
     height: 40px;
-    @include reset-button();
 
     &:hover::before,
     &:hover::after,
     &:focus::before,
-    &:focus::after{
+    &:focus::after {
       opacity: 0.6;
     }
 
@@ -76,7 +76,7 @@
 @media (min-width: $mobile-medium) {
   .main-nav {
     &__toggle {
-      left:  $burger-toggle-left + $burger-toggle-gap-left;
+      left: $burger-toggle-left + $burger-toggle-gap-left;
     }
 
     &__list {

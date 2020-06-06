@@ -1,9 +1,9 @@
 .goods {
   &__list {
+    @include reset-list();
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    @include reset-list();
     margin: 0 auto;
   }
 
@@ -24,16 +24,16 @@
   }
 
   &__title {
-    @include set-font-size(14px)
+    @include set-font-size(14px);
   }
 
   &__grade {
-    @include set-font-size(14px)
+    @include set-font-size(14px);
   }
 
   &__genre {
+    @include set-font-size(11px);
     padding-bottom: 10px;
-    @include set-font-size(11px)
   }
 
   &__additional {
@@ -61,11 +61,12 @@
   }
 
   &__buy-link {
+    @include set-font-size(12px);
+
     display: block;
     padding: 5px;
     border-radius: 6px;
     background: $blue;
-    @include set-font-size(12px);
     text-align: center;
     text-decoration: none;
     color: $white;
@@ -73,7 +74,7 @@
     &:hover,
     &:focus {
       outline: none;
-      background: linear-gradient($blue, $dark-blue);;
+      background: linear-gradient($blue, $dark-blue);
     }
 
     &:active {

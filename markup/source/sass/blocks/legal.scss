@@ -1,7 +1,7 @@
 .legal {
   &__container {
-    margin: 4px 0;
     @include set-font-size(12px);
+    margin: 4px 0;
   }
 
   &__link {

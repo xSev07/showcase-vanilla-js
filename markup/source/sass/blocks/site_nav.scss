@@ -1,7 +1,7 @@
 .site-nav {
-  min-width: 130px;
   @include reset-list();
   @include set-font-size(16px, 36px);
+  min-width: 130px;
   color: $grey;
   border-top: 2px solid $blue;
 
