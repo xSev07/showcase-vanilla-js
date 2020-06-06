@@ -1,6 +1,16 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
-  min-width: 380px;
-  margin: 0 auto;
+  min-width: 370px;
+  box-sizing: border-box;
   font-family: "Segoe UI", Arial, sans-serif;
   @include set-font-size(16px, 36px);
   font-weight: normal;

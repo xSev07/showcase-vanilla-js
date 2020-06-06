@@ -1,5 +1,83 @@
 .goods {
   &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     @include reset-list();
+    margin: 0 auto;
+  }
+
+  &__item {
+    width: 170px;
+    min-height: 260px;
+    margin: 0 15px 55px;
+    border: solid 1px #b5b5b5;
+    border-radius: 10px;
+  }
+
+  &__info {
+    padding: 0 16px 10px 23px;
+  }
+
+  &__info p {
+    margin: 0;
+  }
+
+  &__title {
+    @include set-font-size(14px)
+  }
+
+  &__grade {
+    @include set-font-size(14px)
+  }
+
+  &__genre {
+    padding-bottom: 10px;
+    @include set-font-size(11px)
+  }
+
+  &__additional {
+    @include set-font-size(12px);
+  }
+
+  &__additional-link {
+    color: $blue;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    &:active {
+      opacity: 0.5;
+    }
+  }
+
+  &__buy {
+    width: 136px;
+    margin: 0 auto 10px;
+  }
+
+  &__buy-link {
+    display: block;
+    padding: 5px;
+    border-radius: 6px;
+    background: $blue;
+    @include set-font-size(12px);
+    text-align: center;
+    text-decoration: none;
+    color: $white;
+
+    &:hover,
+    &:focus {
+      outline: none;
+      background: linear-gradient($blue, $dark-blue);;
+    }
+
+    &:active {
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 0 6px rgba(0, 0, 0, 0.2);
+    }
   }
 }

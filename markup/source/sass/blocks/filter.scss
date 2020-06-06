@@ -1,6 +1,7 @@
 .filter {
   display: flex;
   flex-wrap: wrap;
+  margin: 0 15px 20px;
   @include set-font-size(14px);
 
   &__list {
