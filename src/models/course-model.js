@@ -4,7 +4,7 @@ export default class CourseModel {
     this.idExtend = data[`extId`];
     this.courseHash = data[`courseHash`];
     this.title = data[`title`];
-    this.grade = data[`grade`].split(`;`);
+    this.grades = data[`grade`].split(`;`);
     this.genre = data[`genre`];
     this.subject = data[`subject`];
     this.idItunes = data[`itunes_id`];

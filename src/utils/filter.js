@@ -6,7 +6,7 @@ export const getFilters = (courses) => {
   courses.forEach((it) => {
     subjects.add(it.subject);
     genres.add(it.genre);
-    it.grade.forEach((grade) => grades.add(grade));
+    it.grades.forEach((grade) => grades.add(grade));
   });
 
   const filters = {
