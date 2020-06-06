@@ -1,7 +1,7 @@
 import FilterComponent from "../components/filter-component";
 import CatalogComponent from "../components/catalog";
 import CurrencyComponent from "../components/currency-component";
-import GoodsComponent from "../components/goods-component";
+import CoursesComponent from "../components/courses-component";
 import {render} from "../utils/render";
 import {getFilters} from "../utils/filter";
 
@@ -11,7 +11,7 @@ export default class PageController {
     this._siteMainElement = document.querySelector(`.page-main`);
     this._catalogComponent = new CatalogComponent();
     this._currencyComponent = new CurrencyComponent();
-    this._goodsComponent = new GoodsComponent();
+    this._coursesComponent = new CoursesComponent();
   }
 
   render() {
@@ -31,6 +31,6 @@ export default class PageController {
     render(this._siteMainElement, this._filterComponent);
     render(this._siteMainElement, this._catalogComponent);
     render(this._siteMainElement, this._currencyComponent);
-    render(this._siteMainElement, this._goodsComponent);
+    render(this._siteMainElement, this._coursesComponent);
   }
 }
