@@ -16,4 +16,9 @@ export default class CurrencyComponent extends AbstractComponent {
   getTemplate() {
     return createCurrencyTemplate();
   }
+
+  setChangeHandler(handler) {
+    this.getElement().querySelectorAll(`input[name=currency]`)
+      .forEach((it) => it.addEventListener(`change`, handler));
+  }
 }

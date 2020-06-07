@@ -27,7 +27,7 @@ export default class Server {
     return this._load({
       url: `update`,
       method: Method.POST,
-      body: JSON.stringify({'data':''})
+      body: JSON.stringify({"data": ``})
     })
       .then((response) => response.json())
       .then((response) => CourseModel.parseCourses(response.items));
@@ -40,4 +40,4 @@ export default class Server {
         throw err;
       });
   }
-};
+}

@@ -47,7 +47,26 @@ export default class FilterComponent extends AbstractComponent {
     super();
     this._filters = filters;
   }
+
   getTemplate() {
     return createFilterTemplate(this._filters);
+  }
+
+  setSubjectChangeHandler(handler) {
+    this.getElement().querySelector(`#subject`).addEventListener(`change`, handler);
+  }
+
+  setGenreChangeHandler(handler) {
+    this.getElement().querySelector(`#genre`).addEventListener(`change`, handler);
+  }
+
+  setGradeChangeHandler(handler) {
+    this.getElement().querySelector(`#class`).addEventListener(`change`, handler);
+  }
+
+  setFiltersChangeHandlers(handler) {
+    this.setSubjectChangeHandler(handler);
+    this.setGenreChangeHandler(handler);
+    this.setGradeChangeHandler(handler);
   }
 }

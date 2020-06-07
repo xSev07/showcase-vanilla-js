@@ -21,3 +21,26 @@ export const getFilters = (courses) => {
 
   return filters;
 };
+
+export const FilterType = {
+  SUBJECT: `subject`,
+  GENRE: `genre`,
+  GRADE: `class`,
+};
+
+export const getCoursesByFilter = (courses, filterType, filterValue) => {
+  if (filterValue.toLowerCase().startsWith(`все `)) {
+    return courses;
+  }
+
+  switch (filterType) {
+    case FilterType.SUBJECT:
+      return courses.filter((it) => it.subject === filterValue);
+    case FilterType.GENRE:
+      return courses.filter((it) => it.genre === filterValue);
+    case FilterType.GRADE:
+      return courses.filter((it) => it.grades.includes(filterValue));
+    default:
+      return courses;
+  }
+};
