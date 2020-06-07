@@ -7,7 +7,10 @@ const createCardTemplate = (course, currency) => {
     : `${course.grades} класс`;
   return (`
     <li class="courses__item">
-      <img class="courses__picture" src="img/default.jpg" alt="Алгебра">
+      <picture>
+        <source type="image/webp" srcset="img/${course.id}.webp">
+        <img class="courses__picture" src="img/${course.id}.jpg" alt="Алгебра">
+      </picture>
       <div class="courses__info">
         <p class="courses__title">${course.subject}</p>
         <p class="courses__grade">${grades}</p>
