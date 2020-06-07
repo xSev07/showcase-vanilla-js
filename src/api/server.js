@@ -1,4 +1,4 @@
-// import {ResponseStatus} from "../const";
+import {ResponseStatus} from "../const";
 
 import CourseModel from "../models/course-model";
 
@@ -10,8 +10,8 @@ const Method = {
 };
 
 const checkStatus = (response) => {
-  // if (response.status >= ResponseStatus.OK && response.status < ResponseStatus.REDIRECT) {
-  if (response.status >= 200 && response.status < 300) {
+  if (response.status >= ResponseStatus.OK && response.status < ResponseStatus.REDIRECT) {
+  // if (response.status >= 200 && response.status < 300) {
     return response;
   } else {
     throw new Error(`${response.status}: ${response.statusText}`);

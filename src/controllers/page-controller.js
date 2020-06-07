@@ -2,11 +2,12 @@ import FilterComponent from "../components/filter-component";
 import CatalogComponent from "../components/catalog";
 import CurrencyComponent from "../components/currency-component";
 import CoursesComponent from "../components/courses-component";
-import {remove, render} from "../utils/render";
+import {PlaceInsert, remove, render, replace} from "../utils/render";
 import {getFilters} from "../utils/filter";
 import CourseCardComponent from "../components/course-card";
 import CoursesModel from "../models/courses-model";
-import {Currency, KeyCode} from "../const";
+import {Currency, KeyCode, NoDataMessage} from "../const";
+import NoDataComponent from "../components/no-data-component";
 
 export default class PageController {
   constructor(api) {
@@ -14,6 +15,8 @@ export default class PageController {
     this._displayedCourses = [];
     this._currentCurrency = Currency.RUB;
     this._siteMainElement = document.querySelector(`.page-main`);
+    this._coursesListElement = null;
+    this._noDataComponent = new NoDataComponent();
     this._catalogComponent = new CatalogComponent();
     this._currencyComponent = new CurrencyComponent();
     this._coursesComponent = new CoursesComponent();
@@ -23,19 +26,26 @@ export default class PageController {
   }
 
   render() {
-    // TODO: Реализовать заглушку на время загрузки данных
+    render(this._siteMainElement, this._noDataComponent);
 
     this._api.getCourses()
       .then((courses) => this._renderAfterAcceptData(courses))
-      .catch((err) => {
-        // TODO: Реализовать заглушку при ошибке загрузки данных
-        console.log(`Ошибка получения данных. ${err}`);
+      .catch(() => {
+        const oldComponent = this._noDataComponent;
+        this._noDataComponent = new NoDataComponent(NoDataMessage.ERROR);
+        replace(this._noDataComponent, oldComponent);
       });
   }
 
   _renderCourses() {
-    // TODO: Выводить заглушку, если нет курсов удовлетворяющих условиям отбора
-    this._coursesModel.getCourses().forEach((it) => {
+    const courses = this._coursesModel.getCourses();
+    remove(this._noDataComponent);
+    if (courses.length === 0) {
+      this._noDataComponent = new NoDataComponent(NoDataMessage.NOT_FIND);
+      render(this._coursesListElement, this._noDataComponent, PlaceInsert.BEFORE_BEGIN);
+    }
+
+    courses.forEach((it) => {
       const newCourseComponent = new CourseCardComponent(it, this._currentCurrency);
       this._displayedCourses.push(newCourseComponent);
       render(this._coursesListElement, newCourseComponent);

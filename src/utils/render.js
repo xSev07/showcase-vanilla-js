@@ -5,12 +5,16 @@ export const createElement = (template) => {
 };
 
 export const PlaceInsert = {
+  BEFORE_BEGIN: `beforebegin`,
   AFTER_BEGIN: `afterbegin`,
   BEFORE_END: `beforeend`,
-  AFTER_END: `afterend`
+  AFTER_END: `afterend`,
 };
 export const render = (container, component, place = PlaceInsert.BEFORE_END) => {
   switch (place) {
+    case PlaceInsert.BEFORE_BEGIN:
+      container.parentNode.prepend(component.getElement());
+      break;
     case PlaceInsert.AFTER_BEGIN:
       container.prepend(component.getElement());
       break;
