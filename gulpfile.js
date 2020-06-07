@@ -13,7 +13,6 @@ var imagemin = require("gulp-imagemin");
 var webp = require("gulp-webp");
 var svgstore = require("gulp-svgstore");
 var htmlmin = require("gulp-htmlmin");
-var uglify = require('gulp-uglify');
 var server = require("browser-sync").create();
 
 gulp.task("css", function () {
