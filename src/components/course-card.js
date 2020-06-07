@@ -24,10 +24,10 @@ const createCardTemplate = (course, currency) => {
 };
 
 export default class CourseCardComponent extends AbstractSmartComponent {
-  constructor(course) {
+  constructor(course, currency = Currency.RUB) {
     super();
     this._course = course;
-    this._currency = Currency.RUB;
+    this._currency = currency;
   }
 
   getTemplate() {

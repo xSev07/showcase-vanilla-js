@@ -26,10 +26,11 @@ export const FilterType = {
   SUBJECT: `subject`,
   GENRE: `genre`,
   GRADE: `class`,
+  SEARCH: `search`,
 };
 
 export const getCoursesByFilter = (courses, filterType, filterValue) => {
-  if (filterValue.toLowerCase().startsWith(`все `)) {
+  if (filterValue.toLowerCase().startsWith(`все `) || filterValue === ``) {
     return courses;
   }
 
@@ -40,6 +41,9 @@ export const getCoursesByFilter = (courses, filterType, filterValue) => {
       return courses.filter((it) => it.genre === filterValue);
     case FilterType.GRADE:
       return courses.filter((it) => it.grades.includes(filterValue));
+    case FilterType.SEARCH:
+      const searchString = filterValue.toLowerCase();
+      return courses.filter((it) => it.title.toLowerCase().includes(searchString));
     default:
       return courses;
   }

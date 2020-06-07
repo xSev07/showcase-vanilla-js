@@ -7,6 +7,7 @@ export default class CoursesModel {
       [FilterType.SUBJECT]: `все `,
       [FilterType.GENRE]: `все `,
       [FilterType.GRADE]: `все `,
+      [FilterType.SEARCH]: `все `,
     };
   }
 

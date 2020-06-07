@@ -6,17 +6,19 @@ import {remove, render} from "../utils/render";
 import {getFilters} from "../utils/filter";
 import CourseCardComponent from "../components/course-card";
 import CoursesModel from "../models/courses-model";
-import {Currency} from "../const";
+import {Currency, KeyCode} from "../const";
 
 export default class PageController {
   constructor(api) {
     this._api = api;
     this._displayedCourses = [];
+    this._currentCurrency = Currency.RUB;
     this._siteMainElement = document.querySelector(`.page-main`);
     this._catalogComponent = new CatalogComponent();
     this._currencyComponent = new CurrencyComponent();
     this._coursesComponent = new CoursesComponent();
     this._onFilterChange = this._onFilterChange.bind(this);
+    this._onSearchSubmit = this._onSearchSubmit.bind(this);
     this._onCurrencyChange = this._onCurrencyChange.bind(this);
   }
 
@@ -34,7 +36,7 @@ export default class PageController {
   _renderCourses() {
     // TODO: Выводить заглушку, если нет курсов удовлетворяющих условиям отбора
     this._coursesModel.getCourses().forEach((it) => {
-      const newCourseComponent = new CourseCardComponent(it);
+      const newCourseComponent = new CourseCardComponent(it, this._currentCurrency);
       this._displayedCourses.push(newCourseComponent);
       render(this._coursesListElement, newCourseComponent);
     });
@@ -52,21 +54,33 @@ export default class PageController {
     this._renderCourses();
 
     this._filterComponent.setFiltersChangeHandlers(this._onFilterChange);
+    this._filterComponent.setSearchSubmitHandler(this._onSearchSubmit);
     this._currencyComponent.setChangeHandler(this._onCurrencyChange);
+  }
+
+  _setFilterAndRerender(filterType, value) {
+    this._coursesModel.setFilter(filterType, value);
+    this._displayedCourses.forEach((course) => remove(course));
+    this._displayedCourses = [];
+    this._renderCourses();
   }
 
   _onCurrencyChange(evt) {
     this._displayedCourses.forEach((course) => {
       const selectedCurrency = Currency[evt.target.value.toUpperCase()];
+      this._currentCurrency = selectedCurrency;
       course.setCurrency(selectedCurrency);
       course.rerender();
     });
   }
 
   _onFilterChange(evt) {
-    this._coursesModel.setFilter(evt.target.id, evt.target.value);
-    this._displayedCourses.forEach((course) => remove(course));
-    this._displayedCourses = [];
-    this._renderCourses();
+    this._setFilterAndRerender(evt.target.id, evt.target.value);
+  }
+
+  _onSearchSubmit(evt) {
+    if (evt.keyCode === KeyCode.ENTER) {
+      this._setFilterAndRerender(evt.target.id, evt.target.value);
+    }
   }
 }

@@ -52,6 +52,10 @@ export default class FilterComponent extends AbstractComponent {
     return createFilterTemplate(this._filters);
   }
 
+  setSearchSubmitHandler(handler) {
+    this.getElement().querySelector(`#search`).addEventListener(`keydown`, handler);
+  }
+
   setSubjectChangeHandler(handler) {
     this.getElement().querySelector(`#subject`).addEventListener(`change`, handler);
   }
