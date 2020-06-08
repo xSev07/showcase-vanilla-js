@@ -6,7 +6,7 @@ import {PlaceInsert, remove, render, replace} from "../utils/render";
 import {getFilters} from "../utils/filter";
 import CourseCardComponent from "../components/course-card";
 import CoursesModel from "../models/courses-model";
-import {Currency, KeyCode, NoDataMessage} from "../const";
+import {Currency, KeyCode, NoDataMessage, useMocks} from "../const";
 import NoDataComponent from "../components/no-data-component";
 
 export default class PageController {
@@ -28,7 +28,15 @@ export default class PageController {
   render() {
     render(this._siteMainElement, this._noDataComponent);
 
-    this._api.getCourses()
+    let response;
+    if (useMocks) {
+      response = this._api.getMockCourses();
+    } else {
+      response = this._api.getCourses();
+    }
+    // this._api.getCourses()
+    // this._api.getMockCourses()
+    response
       .then((courses) => this._renderAfterAcceptData(courses))
       .catch(() => {
         const oldComponent = this._noDataComponent;
