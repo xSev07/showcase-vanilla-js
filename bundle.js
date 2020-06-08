@@ -540,6 +540,8 @@ const Currency = {
 
 const KeyCode = {
   ENTER: 13,
+  ESC: `Esc`,
+  ESCAPE: `Escape`,
 };
 
 const NoDataMessage = {
@@ -593,6 +595,8 @@ class PageController {
     this._displayedCourses = [];
     this._currentCurrency = _const__WEBPACK_IMPORTED_MODULE_8__["Currency"].RUB;
     this._siteMainElement = document.querySelector(`.page-main`);
+    this._mainNavElement = document.querySelector(`.main-nav`);
+    this._mainNavToggleElement = this._mainNavElement.querySelector(`.main-nav__toggle`);
     this._coursesListElement = null;
     this._noDataComponent = new _components_no_data_component__WEBPACK_IMPORTED_MODULE_9__["default"]();
     this._catalogComponent = new _components_catalog__WEBPACK_IMPORTED_MODULE_1__["default"]();
@@ -601,6 +605,9 @@ class PageController {
     this._onFilterChange = this._onFilterChange.bind(this);
     this._onSearchSubmit = this._onSearchSubmit.bind(this);
     this._onCurrencyChange = this._onCurrencyChange.bind(this);
+    this._onMainMenuClick = this._onMainMenuClick.bind(this);
+    this._onESCKeydown = this._onESCKeydown.bind(this);
+    this._mainNavToggleElement.addEventListener(`click`, this._onMainMenuClick);
   }
 
   render() {
@@ -612,8 +619,6 @@ class PageController {
     } else {
       response = this._api.getCourses();
     }
-    // this._api.getCourses()
-    // this._api.getMockCourses()
     response
       .then((courses) => this._renderAfterAcceptData(courses))
       .catch(() => {
@@ -659,6 +664,27 @@ class PageController {
     this._displayedCourses.forEach((course) => Object(_utils_render__WEBPACK_IMPORTED_MODULE_4__["remove"])(course));
     this._displayedCourses = [];
     this._renderCourses();
+  }
+
+  _switchMainMenu() {
+    this._mainNavElement.classList.toggle(`main-nav--closed`);
+    this._mainNavElement.classList.toggle(`main-nav--opened`);
+  }
+
+  _onESCKeydown(evt) {
+    if (evt.key === _const__WEBPACK_IMPORTED_MODULE_8__["KeyCode"].ESC || evt.key === _const__WEBPACK_IMPORTED_MODULE_8__["KeyCode"].ESCAPE) {
+      this._switchMainMenu();
+      document.removeEventListener(`keydown`, this._onESCKeydown);
+    }
+  }
+
+  _onMainMenuClick() {
+    if (this._mainNavElement.classList.contains(`main-nav--closed`)) {
+      document.addEventListener(`keydown`, this._onESCKeydown);
+    } else {
+      document.removeEventListener(`keydown`, this._onESCKeydown);
+    }
+    this._switchMainMenu();
   }
 
   _onCurrencyChange(evt) {
