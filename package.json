@@ -32,7 +32,7 @@
     "stylelint": "10.1.x",
     "stylelint-config-htmlacademy": "0.1.x",
     "webpack": "4.42.1",
-    "webpack-cli": "3.3.11",
+    "webpack-cli": "3.3.12",
     "webpack-dev-server": "3.10.3"
   },
   "engines": {
